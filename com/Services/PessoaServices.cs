@@ -20,6 +20,10 @@ namespace com.Services
                 HttpClient httpClient = new HttpClient();
                 var res = await httpClient.GetAsync(URL);
                 Console.WriteLine(res.StatusCode + "\n");
+                if (!res.IsSuccessStatusCode)
+                {
+                    Console.WriteLine("Erro ao consumir API: " + res.StatusCode);
+                }
                 jsonString = await res.Content.ReadAsStringAsync();
 
             }
